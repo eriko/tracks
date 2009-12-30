@@ -60,7 +60,7 @@
   <div id="cas_auth_form" style="display:<%=(@prefered_auth.eql?('cas')) ? "block" : "none"%>">
       <table>
         <tr>
-          <td>	<p><%#=@cas_login_url%> <%=Tracks::Config.cas_enabled?%> <%=session[:cas_user]%> </p>
+          <td>
 			<% if @username && @user%>
 			  <p>Hello, <%= @username %>! <%= I18n.t "login.cas_authenticted" %></p>
 			<% elsif @username %>
