@@ -8,10 +8,8 @@ module TodosHelper
   end
 
   def form_remote_tag_edit_todo( &block )
-    form_remote_tag(
-      :url => todo_path(@todo),
-      :loading => "$('#submit_todo_#{@todo.id}').block({message: null})",
-      :html => {
+    form_tag( 
+      todo_path(@todo), {
         :method => :put, 
         :id => dom_id(@todo, 'form'), 
         :class => dom_id(@todo, 'form') + " inline-form edit_todo_form" }, 
@@ -26,7 +24,7 @@ module TodosHelper
 
   def remote_edit_menu_item(parameters, todo)
     return link_to_remote(
-      image_tag("edit_off.png", :mouseover => "edit_on.png", :alt => "Edit", :align => "absmiddle", :id => 'edit_icon_todo_'+todo.id.to_s)+" Edit",
+      image_tag("edit_off.png", :mouseover => "edit_on.png", :alt => "", :align => "absmiddle")+" "+I18n.t(:"common.edit"),
       :url => {:controller => 'todos', :action => 'edit', :id => todo.id},
       :method => 'get',
       :with => "'#{parameters}'",
@@ -36,7 +34,7 @@ module TodosHelper
 
   def remote_delete_menu_item(parameters, todo)
     return link_to_remote(
-      image_tag("delete_off.png", :mouseover => "delete_on.png", :alt => "Delete", :align => "absmiddle")+" Delete",
+      image_tag("delete_off.png", :mouseover => "delete_on.png", :alt => "", :align => "absmiddle")+" "+I18n.t(:"common.delete"),
       :url => {:controller => 'todos', :action => 'destroy', :id => todo.id},
       :method => 'delete',
       :with => "'#{parameters}'",
