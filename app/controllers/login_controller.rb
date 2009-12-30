@@ -23,7 +23,8 @@ class LoginController < ApplicationController
   def login
     if cas_enabled?
       @username = session[:cas_user]
-      @login_url = CASClient::Frameworks::Rails::Filter.login_url(self)
+      @cas_login_url = CASClient::Frameworks::Rails::Filter.login_url(self)+"_cas"   #this lets us come back and go to login_cas.
+      #The line about lines latter should do this but does not as rubycas-client only effects login_cas as seen above.
     end
     if openid_enabled? && using_open_id?
       login_openid

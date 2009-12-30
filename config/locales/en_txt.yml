@@ -24,6 +24,10 @@ en:
     password: Password
     stay_logged_in: Stay logged in
     sign_in: Sign In
+    cas_signup: You do not have an account on Tracks.
+    cas_no_account: You do not have an account on Tracks.
+    cas_authenticted: You are authenticated.
+    cas_login: CAS Login Here
 
   preferences:
     title: Your preferences

@@ -60,17 +60,17 @@
   <div id="cas_auth_form" style="display:<%=(@prefered_auth.eql?('cas')) ? "block" : "none"%>">
       <table>
         <tr>
-          <td>	
+          <td>	<p><%#=@cas_login_url%> <%=Tracks::Config.cas_enabled?%> <%=session[:cas_user]%> </p>
 			<% if @username && @user%>
-			  <p>Hello, <%= @username %>! You are authenticated.</p>
+			  <p>Hello, <%= @username %>! <%= I18n.t "login.cas_authenticted" %></p>
 			<% elsif @username %>
-			  <p>Hello, <%= @username %>! You do not have an account on Tracks.
+			  <p>Hello, <%= @username %>! <%= I18n.t "login.cas_no_account" %>
                 <%if SITE_CONFIG['open_signups']%>
-                   If you like to request on please go here to <%= link_to "Request Account" , signup_url %>
+                   <%= I18n.t "login.cas_signup" %> <%= link_to "Request Account" , signup_url %>
                 <%end%>
               </p>
 			<% else %>
-			  <p><%= link_to("CAS Login", login_cas_url) %>  </p>
+			  <p><%= link_to((I18n.t "login.cas_login") , @cas_login_url) %>  </p>
 			<% end %>
 			</td>
         </tr>
